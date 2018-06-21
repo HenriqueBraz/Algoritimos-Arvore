@@ -16,11 +16,11 @@ public class Node<E> {
     private Node Right;
     private Node Father;
     
-    public Node(E valor){
     
-      this.valor = valor;
+    public Node(){
       
     }
+    
 
     public void setLeft(Node LEFT) {
         this.Left = LEFT;
@@ -36,6 +36,22 @@ public class Node<E> {
 
     public void setFather(Node Father) {
         this.Father = Father;
+    }
+
+    public E getValor() {
+        return valor;
+    }
+
+    public Node getLeft() {
+        return Left;
+    }
+
+    public Node getRight() {
+        return Right;
+    }
+
+    public Node getFather() {
+        return Father;
     }
     
    
