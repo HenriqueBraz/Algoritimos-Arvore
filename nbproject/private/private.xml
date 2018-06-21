@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/17120069/Desktop/Algoritimos---Arvore-master/Algoritimos---Arvore-master/src/arvore/NodePosition.java</file>
-            <file>file:/C:/Users/17120069/Desktop/Algoritimos---Arvore-master/Algoritimos---Arvore-master/src/arvore/no.txt</file>
-            <file>file:/C:/Users/17120069/Desktop/Algoritimos---Arvore-master/Algoritimos---Arvore-master/src/arvore/BinaryTreeLinked.java</file>
-            <file>file:/C:/Users/17120069/Desktop/Algoritimos---Arvore-master/Algoritimos---Arvore-master/src/arvore/Node.java</file>
-            <file>file:/C:/Users/17120069/Desktop/Algoritimos---Arvore-master/Algoritimos---Arvore-master/src/arvore/Arvore.java</file>
-            <file>file:/C:/Users/17120069/Desktop/Algoritimos---Arvore-master/Algoritimos---Arvore-master/src/arvore/BinaryTreeTAD.java</file>
+            <file>file:/C:/Users/17120069/Desktop/Algoritimos-Arvore-master/src/arvore/EmptyTreeException.java</file>
+            <file>file:/C:/Users/17120069/Desktop/Algoritimos-Arvore-master/src/arvore/Node.java</file>
+            <file>file:/C:/Users/17120069/Desktop/Algoritimos-Arvore-master/src/arvore/Arvore.java</file>
+            <file>file:/C:/Users/17120069/Desktop/Algoritimos-Arvore-master/src/arvore/BinaryTreeLinked.java</file>
+            <file>file:/C:/Users/17120069/Desktop/Algoritimos-Arvore-master/src/arvore/no.txt</file>
+            <file>file:/C:/Users/17120069/Desktop/Algoritimos-Arvore-master/src/arvore/BinaryTreeTAD.java</file>
+            <file>file:/C:/Users/17120069/Desktop/Algoritimos-Arvore-master/src/arvore/NodePosition.java</file>
         </group>
     </open-files>
 </project-private>
