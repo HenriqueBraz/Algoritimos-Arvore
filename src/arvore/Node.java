@@ -16,6 +16,9 @@ public class Node<E> {
     private Node Right;
     private Node Father;
     
+    
+    public Node(){}
+    
     public Node(E valor){
     
       this.valor = valor;
@@ -36,6 +39,27 @@ public class Node<E> {
 
     public void setFather(Node Father) {
         this.Father = Father;
+    }
+
+    public E getValor() {
+        return valor;
+    }
+
+    public Node getLeft() {
+        return Left;
+    }
+
+    public Node getRight() {
+        return Right;
+    }
+
+    public Node getFather() {
+        return Father;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" + "valor=" + valor + ", Left=" + Left + ", Right=" + Right + ", Father=" + Father + '}';
     }
     
    

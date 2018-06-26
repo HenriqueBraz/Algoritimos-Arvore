@@ -11,52 +11,17 @@ import java.util.List;
 /**       int[] vet
  *
  * @author 17120069
+ * @param <E>
  */
 
 public class BinaryTreeLinked<E> implements BinaryTreeTAD<E>{
 
- private int count;
- private Node<E> refRoot;
+ private int size;
+ Node father = new Node();
+ 
 
 
-public  BinaryTreeLinked(E[] vet) {
-    
-      
-    
-      List <Node<E>> fila = new LinkedList<Node<E>>();
-              int i; 
-              Node<E> novo = null, primeiro = null;
 
-              NodePosition pos = null;
-              this.count = vet.length;
-
-              if (vet.length > 0) { 
-                  novo = new Node<E>(vet[0]); 
-                  refRoot = novo;
-                  fila.add(0, novo); 
-                  pos = NodePosition.LEFT;
-
-                  for(i = 1; i < vet.length; i++) {
-                           novo = new Node<E>(vet[i]); 
-                           fila.add(novo);
-                           primeiro = fila.get(0); 
-                           novo.setFather(primeiro);
-
-                           if (pos.equals(NodePosition.LEFT)) { 
-                              primeiro.setLeft(novo); 
-                              pos = NodePosition.RIGHT;
-                           } 
-                          else { 
-                              primeiro.setRight(novo); 
-                              fila.remove(0); 
-                              pos = NodePosition.LEFT; 
-                           } 
-                    } 
-                } 
-    
-    
-    
-}   
 
     @Override
     public boolean add(E element, E father, NodePosition position) {
@@ -75,7 +40,10 @@ public  BinaryTreeLinked(E[] vet) {
 
     @Override
     public E getRoot() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
+         if(isEmpty()){ throw new EmptyTreeException(); }
+       
+         return (E) father.getValor(); 
     }
 
     @Override
@@ -105,7 +73,8 @@ public  BinaryTreeLinked(E[] vet) {
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        return size;
     }
 
     @Override
@@ -130,7 +99,7 @@ public  BinaryTreeLinked(E[] vet) {
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return  father.getLeft() == null && father.getRight() == null && father.getValor() == null;
     }
 
     @Override

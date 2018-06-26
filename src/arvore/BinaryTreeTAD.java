@@ -48,7 +48,7 @@ public interface BinaryTreeTAD<E> {
 	 * @return dado armazenado na raiz da �rvore. 
 	 * @throws EmptyTreeException se a �rvore est� vazia.
 	 */
-	E getRoot();
+	E getRoot();//--------------------------------------------> ok
 
 	/**
 	 * Altera o dado armazenado na raiz da �rvore
@@ -89,7 +89,7 @@ public interface BinaryTreeTAD<E> {
 	 * Recupera a quantidade de nodos da �rvore.
 	 * @return n�mero de nodos. 
 	 */
-	int size();
+	int size();//----------------------------------------->ok
 
 	/**
 	 * Recupera a quantidade de nodos da �rvore atrav�s de c�lculo recursivo.
@@ -120,7 +120,7 @@ public interface BinaryTreeTAD<E> {
 	 * Verifica se �rvore est� vazia.
 	 * @return true se a �rvore est� vazia, false caso contr�rio. 
 	 */
-	boolean isEmpty();
+	boolean isEmpty(); //------------------------------------------->ok
 	
 	/**
 	 * Verifica se o elemento fornecido � o raiz.
