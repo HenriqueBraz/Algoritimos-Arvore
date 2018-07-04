@@ -17,8 +17,9 @@ public class Arvore {
     public static void main(String[] args) {
         
         
+         BinaryTreeTAD<String> myTree = new BinaryTreeLinked<>();
         
-        	@Test
+       @Test
 	public void Add1() {
 		myTree.add("1", null, NodePosition.LEFT);
 		myTree.add("2", "1", NodePosition.LEFT);
