@@ -317,8 +317,6 @@ public class BinaryTreeLinked<E> implements BinaryTreeTAD<E> {
     }
 
     //Início dos métodos complementares//
-    
-    
     private void traversalWidth(Node element, List<E> res) {
         Queue<Node> queue = new LinkedList<Node>();
         queue.add(element);

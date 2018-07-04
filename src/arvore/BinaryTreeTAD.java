@@ -186,23 +186,5 @@ public interface BinaryTreeTAD<E> {
      * esquerda para direita.
      */
     List<E> traversalWidth();//------------------------------>ok
-    
-    /**
-     * Percorre a �rvore em amplitude, retornando seus elementos.
-     *
-     * @return Lista com os nodos da �rvore, ordenados n�vel a n�vel, da
-     * esquerda para direita.
-     */
-    List<E> searchNodeRef();//-------------------------------->ok
-   
-   /**
-     * Percorre a �rvore retornando o elemento do  Nodo passado como referencia.
-     *
-     * @return Lista com os nodos da �rvore, ordenados n�vel a n�vel, da
-     * esquerda para direita.
-     */
-    List<E> alturaArvore();//--------------------------------->ok
-   
-  
-   
+
 }
