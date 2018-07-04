@@ -10,7 +10,5 @@ package arvore;
  * @author 17120069
  */
 public class EmptyTreeException extends NullPointerException {
-    
-    
-    
+
 }
