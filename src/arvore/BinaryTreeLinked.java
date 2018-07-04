@@ -298,15 +298,15 @@ public class BinaryTreeLinked<E> implements BinaryTreeTAD<E> {
     @Override
     public List<E> traversalPos() {
         List<E> res = new ArrayList<E>();
-		traversalPos(refRoot, res);
-		return res;
+        traversalPos(refRoot, res);
+        return res;
     }
 
     @Override
     public List<E> traversalCentral() {
         List<E> res = new ArrayList<E>();
-		traversalCentral(refRoot, res);
-		return res;
+        traversalCentral(refRoot, res);
+        return res;
     }
 
     @Override
@@ -316,6 +316,9 @@ public class BinaryTreeLinked<E> implements BinaryTreeTAD<E> {
         return res;
     }
 
+    //Início dos métodos complementares//
+    
+    
     private void traversalWidth(Node element, List<E> res) {
         Queue<Node> queue = new LinkedList<Node>();
         queue.add(element);
@@ -388,23 +391,23 @@ public class BinaryTreeLinked<E> implements BinaryTreeTAD<E> {
             return alturaRight + 1;
         }
     }
-    
+
     private void traversalPos(Node element, List<E> res) {
-		if (element != null) {
-			traversalPos(element.getLeft(), res);
-			traversalPos(element.getRight(), res);
-			res.add(element.getElement());
-		}
+        if (element != null) {
+            traversalPos(element.getLeft(), res);
+            traversalPos(element.getRight(), res);
+            res.add(element.getElement());
+        }
 
-	}
-    
+    }
+
     private void traversalCentral(Node element, List<E> res) {
-		if (element != null) {
-			traversalCentral(element.getLeft(), res);
-			res.add(element.getElement());
-			traversalCentral(element.getRight(), res);
-		}
+        if (element != null) {
+            traversalCentral(element.getLeft(), res);
+            res.add(element.getElement());
+            traversalCentral(element.getRight(), res);
+        }
 
-	}
+    }
 
 }
