@@ -45,6 +45,11 @@ public class BinaryTreeLinked<E> implements BinaryTreeTAD<E> {
             father = novo;
         }
 
+        public Node getFather() {
+
+            return father;
+        }
+
         public void setLeft(Node novo) {
             left = novo;
 
@@ -66,17 +71,81 @@ public class BinaryTreeLinked<E> implements BinaryTreeTAD<E> {
 
     @Override
     public boolean add(E element, E father, NodePosition position) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Node n = new Node(element);
+        Node nAux = null;
+        boolean res = false;
+        if (father == null) {
+            if (position == NodePosition.LEFT) {
+                n.setLeft(refRoot);
+            } else {
+                n.setRight(refRoot);
+            }
+            if (refRoot != null) {
+                refRoot.setFather(n);
+            }
+
+            refRoot = n;
+            res = true;
+            this.totalElementos++;
+        } else {
+            nAux = searchNodeRef(father, refRoot);
+            if (nAux != null) {
+                n.setFather(nAux);
+                if (position == NodePosition.LEFT) {
+                    n.setLeft(nAux.getLeft());
+                    if (nAux.getLeft() != null) {
+                        nAux.getLeft().setFather(n);
+                    }
+                    nAux.setLeft(n);
+                } else {
+                    n.setRight(nAux.getRight());
+                    if (nAux.getRight() != null) {
+                        nAux.getRight().setFather(n);
+                    }
+                    nAux.setRight(n);
+                }
+                res = true;
+                this.totalElementos++;
+            }
+        }
+        return res;
     }
 
     @Override
     public boolean removeBranch(E element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<E> nroRemove = new ArrayList<E>();
+        if (refRoot != null && getRoot().equals(element)) {
+            refRoot = null;
+            return true;
+        }
+        Node res = searchNodeRef(element);
+        if (res == null) {
+            return false;
+        }
+        if (res.getElement().equals(element)) {
+            if (res.getFather().getLeft() == res) {
+                res.getFather().setLeft(null);
+            } else if (res.getFather().getRight() == res) {
+                res.getFather().setRight(null);
+            }
+            traversalPre(res, nroRemove);
+            this.totalElementos = this.totalElementos - nroRemove.size();
+            return true;
+        }
+        return false;
     }
 
     @Override
     public E set(E old, E element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Node res = searchNodeRef(old);
+        if (res == null) {
+            return null;
+        }
+        if (res.getElement().equals(old)) {
+            res.setElement(element);
+            return res.getElement();
+        }
+        return null;
     }
 
     @Override
@@ -91,27 +160,58 @@ public class BinaryTreeLinked<E> implements BinaryTreeTAD<E> {
 
     @Override
     public void setRoot(E element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (getRoot() != null) {
+
+            setRoot(element);
+        }
     }
 
     @Override
     public E getLeft(E element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Node aux = searchNodeRef(element);
+        if (isEmpty()) {
+            return null;
+        } else if (aux.getElement().equals(element)) {
+            return aux.getLeft().getElement();
+        } else {
+            return null;
+        }
     }
 
     @Override
     public E getRight(E element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Node aux = searchNodeRef(element);
+        if (isEmpty()) {
+            return null;
+        } else if (aux.getElement().equals(element)) {
+            return aux.getRight().getElement();
+        } else {
+            return null;
+        }
     }
 
     @Override
     public E getFather(E element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Node aux = searchNodeRef(element);
+        if (isEmpty()) {
+            return null;
+        } else if (aux.getElement().equals(element)) {
+            return aux.getFather().getElement();
+        } else {
+            return null;
+        }
     }
 
     @Override
     public boolean contains(E element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Node aux = searchNodeRef(element);
+        if (aux == null) {
+            return false;
+        } else if (aux.getElement().equals(element)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -127,12 +227,19 @@ public class BinaryTreeLinked<E> implements BinaryTreeTAD<E> {
 
     @Override
     public int countLeaves() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<E> countFolhas = new ArrayList<E>();
+        count(refRoot, countFolhas);
+        return countFolhas.size();
     }
 
     @Override
     public int height() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (this.isEmpty()) {
+            return 0;
+        } else {
+            Node res = refRoot;
+            return alturaArvore(res);
+        }
     }
 
     @Override
@@ -183,17 +290,23 @@ public class BinaryTreeLinked<E> implements BinaryTreeTAD<E> {
 
     @Override
     public List<E> traversalPre() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<E> res = new ArrayList<E>();
+        traversalPre(refRoot, res);
+        return res;
     }
 
     @Override
     public List<E> traversalPos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<E> res = new ArrayList<E>();
+		traversalPos(refRoot, res);
+		return res;
     }
 
     @Override
     public List<E> traversalCentral() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<E> res = new ArrayList<E>();
+		traversalCentral(refRoot, res);
+		return res;
     }
 
     @Override
@@ -231,27 +344,67 @@ public class BinaryTreeLinked<E> implements BinaryTreeTAD<E> {
             }
         }
     }
-        
-        private Node searchNodeRef( E element){
-		return searchNodeRef(element, refRoot);
-	}
-        
-        private Node searchNodeRef(E element, Node target){
-		Node res = null;
-		if((target!=null) && (element!=null)){
-			if(target.getElement().equals(element)){
-				res = target;
-			}
-			else {
-				res = searchNodeRef(element, target.getLeft());
-				if(res == null){
-					res = searchNodeRef(element, target.getRight());
-				}
-			}
-		}
-		return res;
-	}
-        
-        
+
+    private Node searchNodeRef(E element) {
+        return searchNodeRef(element, refRoot);
+    }
+
+    private Node searchNodeRef(E element, Node target) {
+        Node res = null;
+        if ((target != null) && (element != null)) {
+            if (target.getElement().equals(element)) {
+                res = target;
+            } else {
+                res = searchNodeRef(element, target.getLeft());
+                if (res == null) {
+                    res = searchNodeRef(element, target.getRight());
+                }
+            }
+        }
+        return res;
+    }
+
+    private void traversalPre(Node element, List<E> res) {
+        if (element != null) {
+            res.add(element.getElement());
+            traversalPre(element.getLeft(), res);
+            traversalPre(element.getRight(), res);
+        }
+
+    }
+
+    private int alturaArvore(Node count) {
+        int alturaLeft = 0;
+        int alturaRight = 0;
+        if (count.left != null) {
+            alturaLeft = alturaArvore(count.left);
+        }
+        if (count.right != null) {
+            alturaRight = alturaArvore(count.right);
+        }
+        if (alturaLeft > alturaRight) {
+            return alturaLeft + 1;
+        } else {
+            return alturaRight + 1;
+        }
+    }
     
+    private void traversalPos(Node element, List<E> res) {
+		if (element != null) {
+			traversalPos(element.getLeft(), res);
+			traversalPos(element.getRight(), res);
+			res.add(element.getElement());
+		}
+
+	}
+    
+    private void traversalCentral(Node element, List<E> res) {
+		if (element != null) {
+			traversalCentral(element.getLeft(), res);
+			res.add(element.getElement());
+			traversalCentral(element.getRight(), res);
+		}
+
+	}
+
 }
